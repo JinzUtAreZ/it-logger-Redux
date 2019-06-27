@@ -3,9 +3,9 @@
     {
       "id": 1,
       "message": "Changed hard drive on workstation 005",
-      "attention": false,
-      "date": "03-02-2019",
-      "tech": "Sam Smith"
+      "attention": true,
+      "tech": "Sam Smith",
+      "date": "2019-06-27T06:32:14.323Z"
     },
     {
       "id": 2,
@@ -20,6 +20,20 @@
       "attention": false,
       "date": "03-02-2019",
       "tech": "Sara Wilson"
+    },
+    {
+      "id": 4,
+      "message": "Fixed FUCK YOU ASSHOLE EDITOR",
+      "attention": false,
+      "tech": "John Doe",
+      "date": "2019-06-27T05:54:01.586Z"
+    },
+    {
+      "id": 5,
+      "message": "BITCH SHIT",
+      "attention": false,
+      "tech": "Sam Smith",
+      "date": "2019-06-27T06:58:06.760Z"
     }
   ],
   "techs": [
@@ -37,6 +51,11 @@
       "id": 3,
       "firstName": "Sara",
       "lastName": "Wilson"
+    },
+    {
+      "firstName": "KICK ",
+      "lastName": "ASS",
+      "id": 4
     }
   ]
 }

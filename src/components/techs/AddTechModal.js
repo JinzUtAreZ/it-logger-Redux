@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addTech } from '../../actions/techActions';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const AddTechModal = () => {
-  const [firstName, setfirstName] = useState('');
-  const [lastName, setlastName] = useState('');
+const AddTechModal = ({ addTech }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
 
   const onSubmit = () => {
     if (firstName === '' || lastName === '') {
       M.toast({ html: 'Please enter the first and last name' });
     } else {
-      console.log(firstName, lastName);
+      addTech({
+        firstName,
+        lastName
+      });
 
-      // clear fields
-      setfirstName('');
-      setlastName('');
+      M.toast({ html: `${firstName} ${lastName} was added as a tech` });
+
+      // Clear Fields
+      setFirstName('');
+      setLastName('');
     }
   };
 
@@ -27,20 +35,21 @@ const AddTechModal = () => {
               type="text"
               name="firstName"
               value={firstName}
-              onChange={e => setfirstName(e.target.value)}
+              onChange={e => setFirstName(e.target.value)}
             />
-            <label htmlFor="firstname" className="active">
+            <label htmlFor="firstName" className="active">
               First Name
             </label>
           </div>
         </div>
+
         <div className="row">
           <div className="input-field">
             <input
               type="text"
               name="lastName"
               value={lastName}
-              onChange={e => setlastName(e.target.value)}
+              onChange={e => setLastName(e.target.value)}
             />
             <label htmlFor="lastName" className="active">
               Last Name
@@ -52,7 +61,7 @@ const AddTechModal = () => {
         <a
           href="#!"
           onClick={onSubmit}
-          className="modal-close waves-effect blue waves-light btn-flat"
+          className="modal-close waves-effect blue waves-light btn"
         >
           Enter
         </a>
@@ -61,4 +70,11 @@ const AddTechModal = () => {
   );
 };
 
-export default AddTechModal;
+AddTechModal.propTypes = {
+  addTech: PropTypes.func.isRequired
+};
+
+export default connect(
+  null,
+  { addTech }
+)(AddTechModal);
