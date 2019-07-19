@@ -7,7 +7,8 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
-  SEARCH_LOGS
+  SEARCH_LOGS,
+  GET_ASSETS
 } from './types';
 
 // get logs from server
@@ -19,6 +20,44 @@ export const getLogs = () => async dispatch => {
 
     dispatch({
       type: GET_LOGS,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
+
+// get assets from server
+export const getAssets = () => async dispatch => {
+  try {
+    setLoading();
+    const res = await fetch('/tbldata');
+    const data = await res.json();
+
+    dispatch({
+      type: GET_ASSETS,
+      payload: data
+    });
+  } catch (err) {
+    dispatch({
+      type: LOGS_ERROR,
+      payload: err.response.statusText
+    });
+  }
+};
+
+// get assets from server
+export const setColumns = () => async dispatch => {
+  try {
+    setLoading();
+    const res = await fetch('/tbldata');
+    const data = await res.json();
+
+    dispatch({
+      type: GET_ASSETS,
       payload: data
     });
   } catch (err) {

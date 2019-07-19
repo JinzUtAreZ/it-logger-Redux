@@ -7,14 +7,16 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_LOG,
-  SEARCH_LOGS
+  SEARCH_LOGS,
+  GET_ASSETS
 } from '../actions/types';
 
 const initialState = {
   logs: null,
   current: null,
   loading: false,
-  error: null
+  error: null,
+  assets: null
 };
 
 export default (state = initialState, action) => {
@@ -34,6 +36,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         logs: action.payload,
+        loading: false
+      };
+    // try //
+    case GET_ASSETS:
+      return {
+        ...state,
+        assets: action.payload,
         loading: false
       };
     case ADD_LOG:
